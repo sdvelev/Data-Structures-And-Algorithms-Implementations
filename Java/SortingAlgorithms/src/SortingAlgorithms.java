@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class SortingAlgorithms {
 
@@ -45,6 +48,21 @@ public class SortingAlgorithms {
         }
     }
 
+    public static void countingSort(Integer[] arr) {
+        int maxNumber = Collections.max(Arrays.asList(arr));
+        int len = arr.length;
+        int[] countingArray = new int[maxNumber + 1];
+        for (int i = 0; i < len; i++) {
+            countingArray[arr[i]]++;
+        }
+        int currentIndexOfArray = 0;
+        for (int i = 0; i <= maxNumber; i++) {
+            for (int j = 0; j < countingArray[i]; j++){
+                arr[currentIndexOfArray++] = i;
+            }
+        }
+    }
+
     private static int partition(int[] arr, int l, int r) {
         int pivot = arr[r];//pick rightmost element as pivot
         //elements less than pivot will be pushed to the left of i
@@ -60,7 +78,7 @@ public class SortingAlgorithms {
         }
         int tmp = arr[r];
         arr[r] = arr[i];
-        arr[i] = arr[r];
+        arr[i] = tmp;
         return i;
     }
 
@@ -90,5 +108,14 @@ public class SortingAlgorithms {
         insertionSort(arrInsertionSort);
         System.out.println(Arrays.toString(arrInsertionSort));
 
+        // CountingSort
+        Integer [] arrCountingSort = {4, 2, 6, 1, 7, 9, 8};
+        countingSort(arrCountingSort);
+        System.out.println(Arrays.toString(arrCountingSort));
+
+        // QuickSort
+        int [] arrQuickSort = {4, 2, 6, 1, 7, 9, 8};
+        quickSort(arrQuickSort, 0, arrQuickSort.length - 1);
+        System.out.println(Arrays.toString(arrQuickSort));
     }
 }
