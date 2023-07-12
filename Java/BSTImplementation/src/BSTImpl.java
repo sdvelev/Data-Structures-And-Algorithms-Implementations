@@ -1,3 +1,6 @@
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 public class BSTImpl {
 
     private static class Node {
@@ -35,6 +38,11 @@ public class BSTImpl {
         postorder(root);
     }
 
+    public void printBFS() {
+        System.out.println("Breadth First Search:");
+        bfs(root);
+    }
+
     private Node insert(Node root, int key) {
         if (root == null) {
             return new Node(key);
@@ -69,6 +77,25 @@ public class BSTImpl {
             postorder(current.left);
             postorder(current.right);
             System.out.println(current.key);
+        }
+    }
+
+    private void bfs(Node root) {
+        if (root == null) {
+            return;
+        }
+        Queue<Node> printQueue = new ArrayDeque<>();
+        printQueue.add(root);
+        while (!printQueue.isEmpty()) {
+            Node firstElement = printQueue.element();
+            printQueue.remove();
+            System.out.println(firstElement.key);
+            if (firstElement.left != null) {
+                printQueue.add(firstElement.left);
+            }
+            if (firstElement.right != null) {
+                printQueue.add(firstElement.right);
+            }
         }
     }
 
@@ -112,6 +139,7 @@ public class BSTImpl {
         bst.insert(5);
         bst.insert(3);
 
+        bst.printBFS();
         bst.printInorder();
         bst.printPreorder();
         bst.printPostorder();
