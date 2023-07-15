@@ -37,7 +37,7 @@ void printOrderedMultiSet(multiset<int> collection) {
 
 int main()
 {
-    cout << "Demonstration of unordered_set" << "\n";
+    cout << "Demonstration of unordered_set:" << "\n";
     unordered_set<int> collectionSet;
 
     collectionSet.insert(6);
@@ -51,7 +51,7 @@ int main()
 
     printUnorderedSet(collectionSet);
 
-    cout << "Demonstration of unordered_multiset" << "\n";
+    cout << "Demonstration of unordered_multiset:" << "\n";
     unordered_multiset<int> collectionMultiSet;
 
     collectionMultiSet.insert(6);
@@ -65,7 +65,7 @@ int main()
 
     printUnorderedMultiSet(collectionMultiSet);
 
-    cout << "Demonstration of set" << "\n";
+    cout << "Demonstration of set:" << "\n";
     set<int> collectionSetOrdered;
 
     collectionSetOrdered.insert(6);
@@ -79,7 +79,7 @@ int main()
 
     printOrderedSet(collectionSetOrdered);
 
-    cout << "Demonstration of multiset" << "\n";
+    cout << "Demonstration of multiset:" << "\n";
     multiset<int> collectionMultiSetOrdered;
 
     collectionMultiSetOrdered.insert(6);
