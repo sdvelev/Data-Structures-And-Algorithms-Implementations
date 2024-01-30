@@ -1,0 +1,5 @@
+﻿  ProgrammingConceptsDemo.cpp
+D:\Git\Coding-Interview-Problems\C++\ProgrammingConceptsDemo\ProgrammingConceptsDemo.cpp(36,10): warning C4101: 'c1': unreferenced local variable
+D:\Git\Coding-Interview-Problems\C++\ProgrammingConceptsDemo\ProgrammingConceptsDemo.cpp(36,18): warning C4101: 'c3': unreferenced local variable
+D:\Git\Coding-Interview-Problems\C++\ProgrammingConceptsDemo\ProgrammingConceptsDemo.cpp(36,14): warning C4101: 'c2': unreferenced local variable
+  ProgrammingConceptsDemo.vcxproj -> D:\Git\Coding-Interview-Problems\C++\ProgrammingConceptsDemo\Debug\ProgrammingConceptsDemo.exe
