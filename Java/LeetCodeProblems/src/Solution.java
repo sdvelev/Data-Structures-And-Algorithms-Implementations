@@ -72,6 +72,22 @@ public class Solution {
         }
     }
 
+    public static int missingNumber(int[] nums) {
+        Arrays.sort(nums);
+
+        if (nums[0] != 0) {
+            return 0;
+        }
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1] + 1) {
+                return nums[i - 1] + 1;
+            }
+        }
+
+        return nums.length;
+    }
+
     public static void main(String[] args) {
         // Intersect Problem
         int[] resultIntersect = Solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
@@ -89,5 +105,8 @@ public class Solution {
         int[] arrayToMoveZeroes = new int[] {1, 0, 0, 0, 2, 3, 5, 4, 0, 0, 0, 6, 0, 7, 8, 0, 0, 9, 0};
         Solution.moveZeroes(arrayToMoveZeroes);
         System.out.println(Arrays.toString(arrayToMoveZeroes));
+
+        // Missing Number
+        System.out.println(Solution.missingNumber(new int[] {5, 3, 0, 1, 4, 2}));
     }
 }
