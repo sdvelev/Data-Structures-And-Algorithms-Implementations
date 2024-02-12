@@ -100,6 +100,37 @@ public class Solution {
         return n == 1 || n == 7;
     }
 
+    public static int hammingWeight(int n) {
+        int counter = 0;
+        long l = n;
+        if (l < 0) {
+            l = (long) Math.pow(2, 32) + l;
+        }
+
+        String binary = decimalToBinary(l);;
+        for (int i = 0; i < binary.length(); i++) {
+            if (binary.charAt(i) == '1') {
+                ++counter;
+            }
+        }
+        return counter;
+    }
+
+    private static String decimalToBinary(long decimal) {
+        if (decimal == 0) {
+            return "0";
+        }
+
+        StringBuilder binary = new StringBuilder();
+        while (decimal > 0) {
+            long remainder = decimal % 2;
+            binary.insert(0, remainder);
+            decimal /= 2;
+        }
+
+        return binary.toString();
+    }
+
     public static void main(String[] args) {
         // Intersect Problem
         int[] resultIntersect = Solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
@@ -123,5 +154,9 @@ public class Solution {
 
         // Is Happy Number
         System.out.println(Solution.isHappy(19));
+
+        // Hamming Weight
+        System.out.println(Solution.hammingWeight(11));
+        System.out.println(Solution.hammingWeight(-3));
     }
 }
