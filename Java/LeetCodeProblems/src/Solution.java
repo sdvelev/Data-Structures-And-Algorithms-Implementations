@@ -88,6 +88,18 @@ public class Solution {
         return nums.length;
     }
 
+    public static boolean isHappy(int n) {
+        while (n > 9) {
+            int currentNumber = n;
+            n = 0;
+            while (currentNumber != 0) {
+                n = n + (currentNumber % 10) * (currentNumber % 10);
+                currentNumber /= 10;
+            }
+        }
+        return n == 1 || n == 7;
+    }
+
     public static void main(String[] args) {
         // Intersect Problem
         int[] resultIntersect = Solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
@@ -108,5 +120,8 @@ public class Solution {
 
         // Missing Number
         System.out.println(Solution.missingNumber(new int[] {5, 3, 0, 1, 4, 2}));
+
+        // Is Happy Number
+        System.out.println(Solution.isHappy(19));
     }
 }
