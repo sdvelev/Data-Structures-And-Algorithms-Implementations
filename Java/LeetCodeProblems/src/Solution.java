@@ -183,6 +183,23 @@ public class Solution {
         return maxAnswer;
     }
 
+    public static List<List<Integer>> generatePascal(int numRows) {
+        List<List<Integer>> ans = new ArrayList<>();
+
+        for (int i = 0; i < numRows; i++) {
+            Integer[] temp = new Integer[i + 1];
+            Arrays.fill(temp, 1);
+            ans.add(Arrays.asList(temp));
+        }
+
+        for (int i = 2; i < numRows; i++) {
+            for (int j = 1; j < ans.get(i).size() - 1; j++) {
+                ans.get(i).set(j, ans.get(i - 1).get(j - 1) + ans.get(i - 1).get(j));
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         // Intersect Problem
         int[] resultIntersect = Solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
@@ -219,5 +236,8 @@ public class Solution {
 
         // Max profit
         System.out.println(Solution.maxProfit(new int[] {7, 1, 5, 3, 6, 4}));
+
+        // Pascal Triangle
+        System.out.println(Solution.generatePascal(6));
     }
 }
