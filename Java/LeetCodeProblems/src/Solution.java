@@ -217,6 +217,58 @@ public class Solution {
         return "";
     }
 
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummyHead = new ListNode(0);
+        ListNode tail = dummyHead;
+        int carry = 0;
+
+        while (l1 != null || l2 != null || carry != 0) {
+            int digit1 = (l1 != null) ? l1.val : 0;
+            int digit2 = (l2 != null) ? l2.val : 0;
+
+            int sum = digit1 + digit2 + carry;
+            int digit = sum % 10;
+            carry = sum / 10;
+
+            ListNode newNode = new ListNode(digit);
+            tail.next = newNode;
+            tail = tail.next;
+
+            l1 = (l1 != null) ? l1.next : null;
+            l2 = (l2 != null) ? l2.next : null;
+        }
+
+        ListNode result = dummyHead.next;
+        dummyHead.next = null;
+        return result;
+    }
+
+    public static int reverse(int x) {
+        boolean isNegative = false;
+        if (x == Integer.MIN_VALUE) {
+            return 0;
+        } else if (x < 0) {
+            isNegative = true;
+            x = -x;
+        }
+
+        String numberString = String.valueOf(x);
+        StringBuilder numberStringBuilder = new StringBuilder(numberString);
+        numberString = numberStringBuilder.reverse().toString();
+
+        if (isNegative) {
+            if (-Long.parseLong(numberString) < Integer.MIN_VALUE) {
+                return 0;
+            }
+        } else {
+            if (Long.parseLong(numberString) > Integer.MAX_VALUE) {
+                return 0;
+            }
+        }
+
+        return isNegative ? -Integer.parseInt(numberString) : Integer.parseInt(numberString);
+    }
+
     public static void main(String[] args) {
         // Intersect Problem
         int[] resultIntersect = Solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
@@ -259,5 +311,10 @@ public class Solution {
 
         // First Palindrome
         System.out.println(Solution.firstPalindrome(new String[] {"abc", "car", "racecar", "azx", "ala"}));
+
+        // Reverse Integer
+        System.out.println(Solution.reverse(666000));
+        System.out.println(Solution.reverse(120));
+        System.out.println(Solution.reverse(-2147483648));
     }
 }
