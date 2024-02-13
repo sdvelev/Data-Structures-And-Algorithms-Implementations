@@ -147,6 +147,14 @@ public class Solution {
         return a;
     }
 
+    public static int singleNumber(int[] nums) {
+        int result = 0;
+        for (int i = 0; i < nums.length; i++) {
+            result = result ^ nums[i];
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         // Intersect Problem
         int[] resultIntersect = Solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
@@ -174,5 +182,8 @@ public class Solution {
         // Hamming Weight
         System.out.println(Solution.hammingWeight(11));
         System.out.println(Solution.hammingWeight(-3));
+
+        // Single Number
+        System.out.println(Solution.singleNumber(new int[]{1, 6, 5, 4, 4, 5, 3, 1, 3}));
     }
 }
