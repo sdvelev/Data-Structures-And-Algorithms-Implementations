@@ -131,6 +131,22 @@ public class Solution {
         return binary.toString();
     }
 
+    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
+
+        ListNode a = headA;
+        ListNode b = headB;
+
+        while (a != b) {
+            a = a == null ? headA : a.next;
+            b = b == null ? headB : b.next;
+        }
+
+        return a;
+    }
+
     public static void main(String[] args) {
         // Intersect Problem
         int[] resultIntersect = Solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
