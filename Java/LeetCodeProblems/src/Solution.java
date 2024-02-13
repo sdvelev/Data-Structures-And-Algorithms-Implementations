@@ -173,6 +173,16 @@ public class Solution {
         return true;
     }
 
+    public static int maxProfit(int[] prices) {
+        int maxAnswer = 0;
+        int buyValue = prices[0];
+        for (int price : prices) {
+            buyValue = Math.min(buyValue, price);
+            maxAnswer = Math.max(maxAnswer, price - buyValue);
+        }
+        return maxAnswer;
+    }
+
     public static void main(String[] args) {
         // Intersect Problem
         int[] resultIntersect = Solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
@@ -206,5 +216,8 @@ public class Solution {
 
         // Valid Palindrome
         System.out.println(Solution.isPalindrome("A man, a plan, a canal: Panama"));
+
+        // Max profit
+        System.out.println(Solution.maxProfit(new int[] {7, 1, 5, 3, 6, 4}));
     }
 }
