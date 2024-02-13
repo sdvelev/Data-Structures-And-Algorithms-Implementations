@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -155,6 +156,23 @@ public class Solution {
         return result;
     }
 
+    public static boolean isPalindrome(String s) {
+        StringBuilder stringBuilder = new StringBuilder(s.toLowerCase());
+
+        for (int i = 0; i < stringBuilder.length(); i++) {
+            if (!Character.isLetterOrDigit(stringBuilder.charAt(i))) {
+                stringBuilder.deleteCharAt(i);
+                --i;
+            }
+        }
+        for (int i = 0; i < stringBuilder.length() / 2; i++) {
+            if (stringBuilder.charAt(i) != stringBuilder.charAt(stringBuilder.length() - i - 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         // Intersect Problem
         int[] resultIntersect = Solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
@@ -185,5 +203,8 @@ public class Solution {
 
         // Single Number
         System.out.println(Solution.singleNumber(new int[]{1, 6, 5, 4, 4, 5, 3, 1, 3}));
+
+        // Valid Palindrome
+        System.out.println(Solution.isPalindrome("A man, a plan, a canal: Panama"));
     }
 }
