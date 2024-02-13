@@ -200,6 +200,13 @@ public class Solution {
         return ans;
     }
 
+    public static int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return Math.max(maxDepth(root.left) + 1, maxDepth(root.right) + 1);
+    }
+
     public static void main(String[] args) {
         // Intersect Problem
         int[] resultIntersect = Solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
