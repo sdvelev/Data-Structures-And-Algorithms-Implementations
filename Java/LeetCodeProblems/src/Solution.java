@@ -207,6 +207,16 @@ public class Solution {
         return Math.max(maxDepth(root.left) + 1, maxDepth(root.right) + 1);
     }
 
+    public  static String firstPalindrome(String[] words) {
+        for (int i = 0; i < words.length; i++) {
+            StringBuilder currentString = new StringBuilder(words[i]);
+            if (words[i].equals(currentString.reverse().toString())) {
+                return words[i];
+            }
+        }
+        return "";
+    }
+
     public static void main(String[] args) {
         // Intersect Problem
         int[] resultIntersect = Solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
@@ -246,5 +256,8 @@ public class Solution {
 
         // Pascal Triangle
         System.out.println(Solution.generatePascal(6));
+
+        // First Palindrome
+        System.out.println(Solution.firstPalindrome(new String[] {"abc", "car", "racecar", "azx", "ala"}));
     }
 }
