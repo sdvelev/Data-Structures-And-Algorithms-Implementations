@@ -90,6 +90,49 @@ public class SortingAlgorithms {
         }
     }
 
+    private static void merge(List<Integer> arr, int l, int mid, int r) {
+        List<Integer> left = new ArrayList<>();
+        List<Integer> right = new ArrayList<>();
+
+        for (int i = l; i <= mid; i++) {
+            left.add(arr.get(i));
+        }
+
+        for (int i = mid + 1; i <= r; i++) {
+            right.add(arr.get(i));
+        }
+
+        int i = 0;
+        int j = 0;
+        int index = l;
+
+        while (i < left.size() && j < right.size()) {
+            if (left.get(i) < right.get(j)) {
+                arr.set(index++, left.get(i++));
+            } else {
+                arr.set(index++, right.get(j++));
+            }
+        }
+
+        while (i < left.size()) {
+            arr.set(index++, left.get(i++));
+        }
+
+        while (j < right.size()) {
+            arr.set(index++, right.get(j++));
+        }
+    }
+
+    public static void mergeSort(List<Integer> arr, int l, int r) {
+        if (r - l <= 0) {
+            return;
+        }
+
+        int mid = l + (r - l) / 2;
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid + 1, r);
+        merge(arr, l, mid, r);
+    }
 
     public static void main(String[] args) {
 
@@ -117,5 +160,10 @@ public class SortingAlgorithms {
         int [] arrQuickSort = {4, 2, 6, 1, 7, 9, 8};
         quickSort(arrQuickSort, 0, arrQuickSort.length - 1);
         System.out.println(Arrays.toString(arrQuickSort));
+
+        // MergeSort
+        Integer [] arrMergeSort = {4, 2, 6, 1, 7, 9, 8};
+        mergeSort(Arrays.asList(arrMergeSort), 0, arrMergeSort.length - 1);
+        System.out.println(Arrays.toString(arrMergeSort));
     }
 }
