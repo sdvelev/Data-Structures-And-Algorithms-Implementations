@@ -1,9 +1,14 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Solution {
     public static int[] intersect(int[] nums1, int[] nums2) {
@@ -269,6 +274,23 @@ public class Solution {
         return isNegative ? -Integer.parseInt(numberString) : Integer.parseInt(numberString);
     }
 
+    public static boolean isValidSudoku(char[][] board) {
+        Set<String> seen = new HashSet<>();
+        for (int i = 0; i < 9; ++i) {
+            for (int j = 0; j < 9; ++j) {
+                char number = board[i][j];
+                if (number != '.') {
+                    if (!seen.add(number + " in row " + i) ||
+                        !seen.add(number + " in column " + j) ||
+                        !seen.add(number + " in block " + i/3 + "-" + j/3)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         // Intersect Problem
         int[] resultIntersect = Solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
@@ -316,5 +338,18 @@ public class Solution {
         System.out.println(Solution.reverse(666000));
         System.out.println(Solution.reverse(120));
         System.out.println(Solution.reverse(-2147483648));
+
+        // Valid Sudoku
+        System.out.println(Solution.isValidSudoku(new char[][] {
+            {'5','3', '.','.','7','.','.','.','.'},
+            {'6','.', '.','1','9','5','.','.','.'},
+            {'.','9', '8','.','.','.','.','6','.'},
+            {'8','.', '.','.','6','.','.','.','3'},
+            {'4','.', '.','8','.','3','.','.','1'},
+            {'7','.', '.','.','2','.','.','.','6'},
+            {'.','6', '.','.','.','.','2','8','.'},
+            {'.','.', '.','4','1','9','.','.','5'},
+            {'.','.', '.','.','8','.','.','7','9'},
+        }));
     }
 }
